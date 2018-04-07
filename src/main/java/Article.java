@@ -14,7 +14,7 @@ public class Article {
 	private String description;
 	private double price;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private UserDetails user;
 	
 	

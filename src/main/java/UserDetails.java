@@ -36,13 +36,13 @@ public class UserDetails {
     @Column
     private String name;
     
-    @Transient
+    @OneToMany(mappedBy="user", fetch=FetchType.EAGER)
     private List<Article> articles;
     
-    @Transient
+    @Enumerated(EnumType.STRING)
     private UserStatus userStatus;
     
-    @Transient
+    @Temporal(TemporalType.DATE)
     private Date statusDate;
     
     public List<Article> getArticles() {
@@ -105,6 +105,61 @@ public class UserDetails {
     public String toString() {
         return "UserDetails [userId=" + userId + ", password=" + password + ", name=" + name + ", userStatus="
                 + userStatus + ", statusDate=" + statusDate + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((articles == null) ? 0 : articles.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((statusDate == null) ? 0 : statusDate.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        result = prime * result + ((userStatus == null) ? 0 : userStatus.hashCode());
+        result = prime * result + (int) (version ^ (version >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        UserDetails other = (UserDetails) obj;
+        if (articles == null) {
+            if (other.articles != null)
+                return false;
+        } else if (!articles.equals(other.articles))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (password == null) {
+            if (other.password != null)
+                return false;
+        } else if (!password.equals(other.password))
+            return false;
+        if (statusDate == null) {
+            if (other.statusDate != null)
+                return false;
+        } else if (!statusDate.equals(other.statusDate))
+            return false;
+        if (userId == null) {
+            if (other.userId != null)
+                return false;
+        } else if (!userId.equals(other.userId))
+            return false;
+        if (userStatus != other.userStatus)
+            return false;
+        if (version != other.version)
+            return false;
+        return true;
     }
 
   

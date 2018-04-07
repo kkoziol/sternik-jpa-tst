@@ -20,10 +20,10 @@
 			<!-- http://www.eclipse.org/eclipselink/documentation/2.4/jpa/extensions/p_ddl_generation.htm -->
 
 			<!-- 
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" /> 
 			<property name="eclipselink.ddl-generation" value="create-tables" />
-				-->
 			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+				-->
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" /> 
 
 			<property name="eclipselink.create-ddl-jdbc-file-name"
 				value="createDDL_ddlGeneration.jdbc" />
