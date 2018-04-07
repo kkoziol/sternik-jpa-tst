@@ -20,14 +20,18 @@ public class ArticleTests {
 
             em.getTransaction().begin();
 
-            // UserDetails user = em.find(UserDetails.class, "system30.8906986756300783");
+            UserDetails user = new UserDetails();
+            user.setName("kk");
+            user.setPassword("kk");
 
+//            em.persist(user);
+            
             Article article = new Article();
             // article.setId(1 + (int)(Math.random()*100));
             article.setName("ram");
             article.setPrice(100);
             article.setDescription("DDR3 16GB");
-            // article.setUser(user);
+            article.setUser(user);
 
             em.persist(article);
 

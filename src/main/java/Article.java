@@ -1,3 +1,4 @@
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ public class Article {
 	private String description;
 	private double price;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private UserDetails user;
 	
 	
