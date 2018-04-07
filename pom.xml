@@ -33,7 +33,7 @@
 			<version>1.4.194</version>
 		</dependency>
 
-<!-- 		<dependency>
+		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>
 			<version>2.5.0</version>
@@ -43,7 +43,7 @@
 					<artifactId>commonj.sdo</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency> -->
+		</dependency>
 	</dependencies>
 
 </project>

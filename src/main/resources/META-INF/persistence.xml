@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence">
+	<!-- Dobra sciagawka: https://gist.github.com/mortezaadi/8619433 -->
+
+
+	<persistence-unit name="h2-eclipselink"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+       
+		
+        <properties>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="sa" />
+
+			<!-- http://www.eclipse.org/eclipselink/documentation/2.4/jpa/extensions/p_ddl_generation.htm -->
+
+			<!-- 
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" /> 
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+				-->
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+
+			<property name="eclipselink.create-ddl-jdbc-file-name"
+				value="createDDL_ddlGeneration.jdbc" />
+			<property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration.jdbc" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="both" />
+           <property name="eclipselink.logging.level" value="INFO" />
+            <property name="eclipselink.logging.level.sql" value="FINE"/>            
+            <property name="eclipselink.logging.parameters" value="true"/>
+
+		</properties>
+	</persistence-unit>
+
+
+
+
+	<persistence-unit name="hello" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+		<properties>
+			<property name="eclipselink.target-database" value="Database" />
+			<property name="javax.persistence.jdbc.driver" value="sun.jdbc.odbc.JdbcOdbcDriver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=x:/dtxxx.mdb;" />
+			<property name="javax.persistence.jdbc.user" value="" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<!-- -->
+		</properties>
+	</persistence-unit>
+</persistence>
