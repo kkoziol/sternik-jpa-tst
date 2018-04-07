@@ -13,19 +13,19 @@ public class Article {
 	private String description;
 	private double price;
 	
-//	@ManyToOne
-//	private UserDetails user;
+	@ManyToOne
+	private UserDetails user;
 	
 	
 	
 
-//	public UserDetails getUser() {
-//        return user;
-//    }
+	public UserDetails getUser() {
+        return user;
+    }
 
-//    public void setUser(UserDetails user) {
-//        this.user = user;
-//    }
+    public void setUser(UserDetails user) {
+        this.user = user;
+    }
 
     public int getId() {
 		return id;
