@@ -2,7 +2,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 
 @Entity
 public class Article {
@@ -10,22 +12,25 @@ public class Article {
     @Id
     @GeneratedValue
 	private int id;
-	private String name;
+    
+    @Version
+    int version;
+    
+  	private String name;
 	private String description;
 	private double price;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	private UserDetails user;
-	
+	@ManyToOne()
+	private UserDetails userDetails;
 	
 	
 
-	public UserDetails getUser() {
-        return user;
+    public UserDetails getUserDetails() {
+        return userDetails;
     }
 
-    public void setUser(UserDetails user) {
-        this.user = user;
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
     }
 
     public int getId() {
@@ -62,10 +67,18 @@ public class Article {
 
 
 
-	@Override
+	public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    @Override
     public String toString() {
         return "Article [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", user="
-                 + "]";
+                 +userDetails + "]";
     }
 
     public Article(int id, String name, String description, double price) {
