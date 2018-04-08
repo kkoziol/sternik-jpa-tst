@@ -1,5 +1,6 @@
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,7 +21,7 @@ public class Article {
 	private String description;
 	private double price;
 	
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.LAZY)
 	private UserDetails userDetails;
 	
 	

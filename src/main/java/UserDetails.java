@@ -23,6 +23,10 @@ import javax.persistence.Version;
 
 
 @Entity
+@NamedQueries({
+@NamedQuery(name="UserDetails.findAllWithFetch", query="SELECT DISTINCT u FROM UserDetails u LEFT JOIN FETCH u.articles"),
+@NamedQuery(name="UserDetails.findAll", query="SELECT u FROM UserDetails u")
+})
 public class UserDetails {
 
 
